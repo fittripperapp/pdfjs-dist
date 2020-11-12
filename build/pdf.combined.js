@@ -48293,11 +48293,11 @@ if (typeof PDFJS === 'undefined' || !PDFJS.compatibilityChecked) {
     if (!hasDOM) {
       return;
     }
-    if (isIOS) {
-      installFakeAnimationFrameFunctions();
+    if ('requestAnimationFrame' in window) {
       return;
     }
-    if ('requestAnimationFrame' in window) {
+    if (isIOS) {
+      installFakeAnimationFrameFunctions();
       return;
     }
     window.requestAnimationFrame = window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
